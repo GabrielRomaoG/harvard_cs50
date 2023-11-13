@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <cs50.h>
+#include <stdio.h>
 
 int get_population_years(int start_population, int end_population);
 
@@ -17,11 +17,11 @@ int main(void)
     do
     {
         end_population = get_int("End size: ");
-    } while (end_population < start_population);
+    }
+    while (end_population < start_population);
 
     int years = get_population_years(start_population, end_population);
     printf("Years: %i\n", years);
-    
 }
 
 int get_population_years(int start_population, int end_population)
