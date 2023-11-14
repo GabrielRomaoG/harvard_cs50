@@ -9,7 +9,7 @@ int main(void)
     do
     {
         height = get_int("Height: ");
-    } while (height < 1 || height > 9);
+    } while (height < 1 || height > 8);
     print_pyramid(height);
 }
 
