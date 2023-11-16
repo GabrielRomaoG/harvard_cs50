@@ -2,10 +2,13 @@
 #include <stdio.h>
 
 void validateCreditCardNumber(long long const card_number);
+int power(int base, int exponent);
 
 int main(void)
 {
+
     long long number = 6176292929;
+    // long long divided = number / 10;
     validateCreditCardNumber(number);
 }
 
@@ -32,3 +35,11 @@ void validateCreditCardNumber(long long const card_number)
     }
 }
 
+int power(int const base, int const exponent)
+{
+    if (exponent == 1)
+    {
+        return base;
+    }
+    return base * power(base, exponent - 1);
+}
