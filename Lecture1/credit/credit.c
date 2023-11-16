@@ -32,7 +32,7 @@ string validateCreditCardNumber(long long const card_number)
         return validation_output;
     }
 
-    int first_two_digits = card_number / 100;
+    int first_two_digits = card_number / power(10, card_length - 2);
     int first_digit = first_two_digits / 10;
 
     if (first_two_digits == 34 || first_two_digits == 37 && card_length == 15)
