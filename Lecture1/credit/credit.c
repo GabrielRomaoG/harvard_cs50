@@ -6,32 +6,45 @@ int power(int base, int exponent);
 
 int main(void)
 {
-
     long long number = 6176292929;
-    // long long divided = number / 10;
     validateCreditCardNumber(number);
 }
 
 void validateCreditCardNumber(long long const card_number)
 {
-    long long end_number_test = card_number;
-    int sum = 0;
+    // Luhn's validation
+    int checksum = 0;
+    int card_length = 0;
 
-    for (int position = 0; end_number_test != 0; position++)
+    for (long long end_number_test = card_number; end_number_test != 0; end_number_test /= 10)
     {
         int digit = end_number_test % 10;
-        end_number_test /= 10;
-        
-        if (position % 2 == 1)
+        if (card_length % 2 == 1)
         {
             digit *= 2;
         }
-
-        sum += digit;
+        checksum += digit;
+        card_length++;
     }
-    if (sum % 10 != 0)
+    if (checksum % 10 != 0)
     {
         printf("INVALID");
+    }
+
+    int first_two_digits = card_number / 100;
+    int first_digit = first_two_digits / 10;
+
+    if (first_two_digits == 34 || first_two_digits == 37 && card_length == 15)
+    {
+        printf("AMEX");
+    }
+    if (51 <= first_two_digits <= 55 && card_length == 16)
+    {
+        printf("MASTERCARD");
+    }
+    if (first_two_digits == 34 || first_two_digits == 37 && card_length == 15)
+    {
+        printf("AMEX");
     }
 }
 
