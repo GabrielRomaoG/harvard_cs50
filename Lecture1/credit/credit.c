@@ -43,7 +43,7 @@ string validateCreditCardNumber(long long const card_number)
     {
         validation_output = "MASTERCARD";
     }
-    if (first_two_digits == 34 || first_two_digits == 37 && card_length == 15)
+    if (first_digit == 4  && 13 <= card_length <= 16)
     {
         validation_output = "VISA";
     }
