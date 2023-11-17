@@ -24,7 +24,7 @@ string validateCreditCardNumber(long long const card_number)
         {
             digit *= 2;
         }
-        checksum += digit;
+        checksum += digit/10 + digit%10 ;
         card_length++;
     }
     if (checksum % 10 != 0)
