@@ -6,7 +6,7 @@ long long power(int base, int exponent);
 
 int main(void)
 {
-    long long number = 4003600000000014;
+    long long number = get_long_long("Number: ");
     printf("%s", validateCreditCardNumber(number));
 }
 
