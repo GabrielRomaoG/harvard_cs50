@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 string validateCreditCardNumber(long long const card_number);
-int power(int base, int exponent);
+long long power(int base, int exponent);
 
 int main(void)
 {
@@ -39,18 +39,18 @@ string validateCreditCardNumber(long long const card_number)
     {
         validation_output = "AMEX";
     }
-    if (51 <= first_two_digits <= 55 && card_length == 16)
+    if (51 <= first_two_digits && first_two_digits <= 55 && card_length == 16)
     {
         validation_output = "MASTERCARD";
     }
-    if (first_digit == 4  && 13 <= card_length <= 16)
+    if (first_digit == 4  && 13 <= card_length && card_length <= 16)
     {
         validation_output = "VISA";
     }
     return validation_output;
 }
 
-int power(int const base, int const exponent)
+long long power(int const base, int const exponent)
 {
     if (exponent == 1)
     {
