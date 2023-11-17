@@ -12,7 +12,6 @@ int main(void)
 
 string validateCreditCardNumber(long long const card_number)
 {
-    string validation_output = "INVALID";
     // Luhn's validation
     int checksum = 0;
     int card_length = 0;
@@ -29,7 +28,7 @@ string validateCreditCardNumber(long long const card_number)
     }
     if (checksum % 10 != 0)
     {
-        return validation_output;
+        return "INVALID";
     }
 
     int first_two_digits = card_number / power(10, card_length - 2);
@@ -37,17 +36,17 @@ string validateCreditCardNumber(long long const card_number)
 
     if (first_two_digits == 34 || first_two_digits == 37 && card_length == 15)
     {
-        validation_output = "AMEX";
+        return "AMEX";
     }
     if (51 <= first_two_digits && first_two_digits <= 55 && card_length == 16)
     {
-        validation_output = "MASTERCARD";
+        return "MASTERCARD";
     }
     if (first_digit == 4  && 13 <= card_length && card_length <= 16)
     {
-        validation_output = "VISA";
+        return "VISA";
     }
-    return validation_output;
+    return "INVALID";
 }
 
 long long power(int const base, int const exponent)
