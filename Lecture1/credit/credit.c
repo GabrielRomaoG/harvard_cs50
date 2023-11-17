@@ -7,7 +7,7 @@ long long power(int base, int exponent);
 int main(void)
 {
     long long number = get_long_long("Number: ");
-    printf("%s", validateCreditCardNumber(number));
+    printf("%s\n", validateCreditCardNumber(number));
 }
 
 string validateCreditCardNumber(long long const card_number)
@@ -23,7 +23,7 @@ string validateCreditCardNumber(long long const card_number)
         {
             digit *= 2;
         }
-        checksum += digit/10 + digit%10 ;
+        checksum += digit / 10 + digit % 10;
         card_length++;
     }
     if (checksum % 10 != 0)
@@ -34,7 +34,7 @@ string validateCreditCardNumber(long long const card_number)
     int first_two_digits = card_number / power(10, card_length - 2);
     int first_digit = first_two_digits / 10;
 
-    if (first_two_digits == 34 || first_two_digits == 37 && card_length == 15)
+    if ((first_two_digits == 34 || first_two_digits == 37) && card_length == 15)
     {
         return "AMEX";
     }
@@ -42,7 +42,7 @@ string validateCreditCardNumber(long long const card_number)
     {
         return "MASTERCARD";
     }
-    if (first_digit == 4  &&  (card_length == 13 || card_length == 16))
+    if (first_digit == 4 && (card_length == 13 || card_length == 16))
     {
         return "VISA";
     }
