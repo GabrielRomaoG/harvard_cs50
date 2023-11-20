@@ -1,5 +1,5 @@
-#include <ctype.h>
 #include <cs50.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -12,8 +12,6 @@ int main(void)
 {
     // Get input words from both players
     string word1 = get_string("Player 1: ");
-    // string word2 = "Punctuation!?!?";
-    // string word1 = "punctuation";
     string word2 = get_string("Player 2: ");
 
     // Score both words
@@ -21,9 +19,18 @@ int main(void)
     int score2 = compute_score(word2);
 
     // TODO: Print the winner
-    if (score1 > score2){printf("Player 1 wins!");}
-    if (score1 < score2){printf("Player 2 wins!");}
-    if (score1 == score2){printf("Tie!");}
+    if (score1 > score2)
+    {
+        printf("Player 1 wins!");
+    }
+    if (score1 < score2)
+    {
+        printf("Player 2 wins!");
+    }
+    if (score1 == score2)
+    {
+        printf("Tie!");
+    }
 }
 
 int compute_score(string word)
