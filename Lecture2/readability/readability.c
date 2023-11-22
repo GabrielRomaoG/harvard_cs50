@@ -3,6 +3,7 @@
 
 int count_letters(string text);
 int count_words(string text);
+int count_sentences(string text);
 
 int main(void)
 {
@@ -26,13 +27,27 @@ int count_letters(string text)
 int count_words(string text)
 {
     int count = 0;
-    for (int letter_pos = 0; text[letter_pos] != '\0'; letter_pos++)
+    for (int character_pos = 0; text[character_pos] != '\0'; character_pos++)
     {
-        char character = text[letter_pos];
+        char character = text[character_pos];
         if (character == 32)
         {
             count++;
         }
     }
     return count + 1;    
+}
+
+int count_sentences(string text)
+{
+    int count = 0;
+    for (int character_pos = 0; text[character_pos] != '\0'; character_pos++)
+    {
+        char character = text[character_pos];
+        if (character == 33 || character == 46 || character == 63)
+        {
+            count++;
+        }
+    }
+    return count;    
 }
