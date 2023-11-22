@@ -13,9 +13,9 @@ int main(void)
 int count_letters(string text)
 {
     int count = 0;
-    for (int letter_pos = 0; text[letter_pos] != '\0'; letter_pos++)
+    for (int character_pos = 0; text[character_pos] != '\0'; character_pos++)
     {
-        char character = text[letter_pos];
+        char character = text[character_pos];
         if ((character >= 65 && character <= 90) || (character >= 97 && character <= 122))
         {
             count++;
