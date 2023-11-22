@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 int count_letters(string text);
+int count_words(string text);
 
 int main(void)
 {
@@ -20,4 +21,18 @@ int count_letters(string text)
         }
     }
     return count;
+}
+
+int count_words(string text)
+{
+    int count = 0;
+    for (int letter_pos = 0; text[letter_pos] != '\0'; letter_pos++)
+    {
+        char character = text[letter_pos];
+        if (character == 32)
+        {
+            count++;
+        }
+    }
+    return count + 1;    
 }
