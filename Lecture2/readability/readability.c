@@ -6,7 +6,8 @@ void print_grade(string text);
 
 int main(void)
 {
-    int letters = count_letters("AloHa  Zi!!!...");
+    string text = get_string("Text: "); 
+    print_grade(text);
 }
 
 int count_letters(string text)
