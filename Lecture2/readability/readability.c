@@ -2,10 +2,6 @@
 #include <stdio.h>
 #include <math.h>
 
-int count_letters(string text);
-int count_words(string text);
-int count_sentences(string text);
-int calculate_index(int letters, int words, int sentences);
 void print_grade(string text);
 
 int main(void)
