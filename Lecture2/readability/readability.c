@@ -66,14 +66,14 @@ void print_grade(string text)
 
     if (index < 1)
     {
-        printf("Before Grade 1");
+        printf("Before Grade 1\n");
     }
     if (index >= 1 && index < 16)
     {
-        printf("Grade: %i", index);
+        printf("Grade %i\n", index);
     }
     if (index >= 16)
     {
-        printf("Grade 16+");
+        printf("Grade 16+\n");
     }
 }
