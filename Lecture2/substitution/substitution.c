@@ -24,8 +24,8 @@ void print_encrypted_cipher(string key, string plaintext)
         {
             printf("%c", character);
         }
-        char upper_letter = toupper(character);
-        char encrypted_char = upper_key[upper_letter - 'A'];
+        
+        char encrypted_char = upper_key[toupper(character) - 'A'];
 
         if (islower(character))
         {
