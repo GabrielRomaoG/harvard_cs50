@@ -7,13 +7,12 @@ void print_encrypted_cipher(string key, string plaintext);
 
 int main(int argc, string argv[])
 {
-    string key =  "YTNSHKVEFXRBAUQZCLWDMIJGJO";
-    string plaintext = "HELLO";
+    string key =  argv[1];
 
     if (argc != 2)
     {
-        printf("Usage: %s KEY", argv[0])
-        return 1
+        printf("Usage: %s KEY", argv[0]);
+        return 1;
     }
 
     if (strlen(key) != 26)
@@ -37,7 +36,9 @@ int main(int argc, string argv[])
             }
         }
     }
+    string plaintext = get_string("plaintext:  ");
     
+    printf("ciphertext: ");
     print_encrypted_cipher(key, plaintext);
     return 0;
 }
@@ -56,7 +57,7 @@ void print_encrypted_cipher(string key, string plaintext)
         {
             printf("%c", character);
         }
-        
+
         char encrypted_char = upper_key[toupper(character) - 'A'];
 
         if (islower(character))
