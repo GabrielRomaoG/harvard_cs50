@@ -1,8 +1,8 @@
 #include <cs50.h>
-#include <stdio.h>
 #include <ctype.h>
+#include <stdio.h>
 
-string encrypt_cipher(string key);
+void print_encrypted_cipher(string key, string plaintext);
 
 int main(int argc, string argv[])
 {
@@ -10,12 +10,30 @@ int main(int argc, string argv[])
     return 0;
 }
 
-string encrypt_cipher(string key)
+void print_encrypted_cipher(string key, string plaintext)
 {
-    string upper_key;
-    for (int character = 0; key[character] != '\0'; character++)
+    char upper_key[26];
+    for (int i = 0; key[i] != '\0'; i++)
     {
-        upper_key[character] = toupper(key[character]);
+        upper_key[i] = toupper(key[i]);
     }
-    return upper_key;
+    for (int i = 0; plaintext[i] != '\0'; i++)
+    {
+        char character = plaintext[i];
+        if (!isalpha(character))
+        {
+            printf("%c", character);
+        }
+        char upper_letter = toupper(character);
+        char encrypted_char = upper_key[upper_letter - 'A'];
+
+        if (islower(character))
+        {
+            printf("%c", tolower(encrypted_char));
+        }
+        if (isupper(character))
+        {
+            printf("%c", encrypted_char);
+        }
+    }
 }
