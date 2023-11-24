@@ -1,6 +1,7 @@
 #include <cs50.h>
 #include <ctype.h>
 #include <stdio.h>
+#include <string.h>
 
 void print_encrypted_cipher(string key, string plaintext);
 
