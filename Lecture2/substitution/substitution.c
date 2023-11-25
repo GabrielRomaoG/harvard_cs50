@@ -40,6 +40,7 @@ int main(int argc, string argv[])
     
     printf("ciphertext: ");
     print_encrypted_cipher(key, plaintext);
+    printf("\n");
     return 0;
 }
 
@@ -57,16 +58,13 @@ void print_encrypted_cipher(string key, string plaintext)
         {
             printf("%c", character);
         }
-
-        char encrypted_char = upper_key[toupper(character) - 'A'];
-
         if (islower(character))
         {
-            printf("%c", tolower(encrypted_char));
+            printf("%c", tolower(upper_key[character - 'a']));
         }
         if (isupper(character))
         {
-            printf("%c", encrypted_char);
+            printf("%c", upper_key[character - 'A']);
         }
     }
 }
