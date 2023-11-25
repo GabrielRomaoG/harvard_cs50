@@ -7,7 +7,7 @@ void print_encrypted_cipher(string key, string plaintext);
 
 int main(int argc, string argv[])
 {
-    string key =  argv[1];
+    string key = argv[1];
 
     if (argc != 2)
     {
@@ -27,7 +27,7 @@ int main(int argc, string argv[])
             printf("Key must only contain alphabetic characters.");
             return 1;
         }
-        for (int seg_char = 0; seg_char < i; seg_char ++)
+        for (int seg_char = 0; seg_char < i; seg_char++)
         {
             if (key[i] == key[seg_char])
             {
