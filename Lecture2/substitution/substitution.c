@@ -21,6 +21,7 @@ int main(int argc, string argv[])
         printf("Key must contain 26 characters.○\n");
         return 1;
     }
+    bool repeated_chars_test[26] = {};
     for (int i = 0; key[i] != '\0'; i++)
     {
         if (!isalpha(key[i]))
@@ -28,14 +29,15 @@ int main(int argc, string argv[])
             printf("Key must only contain alphabetic characters.\n");
             return 1;
         }
-        for (int seg_char = 0; seg_char < i; seg_char++)
+
+        int bool_index = tolower(key[i]) - 'a';
+
+        if (repeated_chars_test[bool_index] == true)
         {
-            if (key[i] == key[seg_char])
-            {
-                printf("Key must not contain repeated characters.");
-                return 1;
-            }
+            printf("Key must not contain repeated characters.\n");
+            return 1;
         }
+        repeated_chars_test[bool_index] = true;
     }
     string plaintext = get_string("plaintext:  ");
     
