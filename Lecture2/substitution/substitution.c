@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
+bool is_valid_key(string key);
 bool has_only_alphas(string key);
 bool has_repeated_characters(string key);
 void print_encrypted_cipher(string key, string plaintext);
@@ -18,27 +19,37 @@ int main(int argc, string argv[])
 
     string key = argv[1];
 
-    if (strlen(key) != 26)
+    if (!is_valid_key(key))
     {
-        printf("Key must contain 26 characters.○\n");
         return 1;
     }
-    if (!has_only_alphas(key))
-    {
-        printf("Key must only contain alphabetic characters.\n");
-        return 1;
-    }
-    if (has_repeated_characters(key))
-    {
-        printf("Key must not contain repeated characters.\n");
-        return 1;
-    }
+
     string plaintext = get_string("plaintext:  ");
     
     printf("ciphertext: ");
     print_encrypted_cipher(key, plaintext);
     printf("\n");
     return 0;
+}
+
+bool is_valid_key(string key)
+{
+    if (strlen(key) != 26)
+    {
+        printf("Key must contain 26 characters.○\n");
+        return false;
+    }
+    if (!has_only_alphas(key))
+    {
+        printf("Key must only contain alphabetic characters.\n");
+        return false;
+    }
+    if (has_repeated_characters(key))
+    {
+        printf("Key must not contain repeated characters.\n");
+        return false;
+    }
+    return true;
 }
 
 bool has_only_alphas(string key)
