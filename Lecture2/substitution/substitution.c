@@ -7,13 +7,14 @@ void print_encrypted_cipher(string key, string plaintext);
 
 int main(int argc, string argv[])
 {
-    string key = argv[1];
 
     if (argc != 2)
     {
         printf("Usage: %s KEY", argv[0]);
         return 1;
     }
+
+    string key = argv[1];
 
     if (strlen(key) != 26)
     {
