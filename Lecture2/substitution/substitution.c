@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
+bool has_repeated_characters(string key);
 void print_encrypted_cipher(string key, string plaintext);
 
 int main(int argc, string argv[])
@@ -21,7 +22,6 @@ int main(int argc, string argv[])
         printf("Key must contain 26 characters.○\n");
         return 1;
     }
-    bool repeated_chars_test[26] = {};
     for (int i = 0; key[i] != '\0'; i++)
     {
         if (!isalpha(key[i]))
@@ -29,15 +29,11 @@ int main(int argc, string argv[])
             printf("Key must only contain alphabetic characters.\n");
             return 1;
         }
-
-        int bool_index = tolower(key[i]) - 'a';
-
-        if (repeated_chars_test[bool_index] == true)
-        {
-            printf("Key must not contain repeated characters.\n");
-            return 1;
-        }
-        repeated_chars_test[bool_index] = true;
+    }
+    if (has_repeated_characters(key))
+    {
+        printf("Key must not contain repeated characters.\n");
+        return 1;
     }
     string plaintext = get_string("plaintext:  ");
     
@@ -45,6 +41,23 @@ int main(int argc, string argv[])
     print_encrypted_cipher(key, plaintext);
     printf("\n");
     return 0;
+}
+
+bool has_repeated_characters(string key)
+{
+    bool repeated_chars_test[26] = {};
+    for (int i = 0; key[i] != '\0'; i++)
+    {
+        int bool_index = tolower(key[i]) - 'a';
+
+        if (repeated_chars_test[bool_index] == true)
+        {
+            return true;
+        }
+
+        repeated_chars_test[bool_index] = true;
+    }
+    return false;
 }
 
 void print_encrypted_cipher(string key, string plaintext)
