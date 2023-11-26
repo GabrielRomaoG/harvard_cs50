@@ -17,7 +17,7 @@ int main(int argc, string argv[])
         return 1;
     }
 
-    string key = argv[1];
+    const string key = argv[1];
 
     if (!is_valid_key(key))
     {
