@@ -18,14 +18,14 @@ int main(int argc, string argv[])
 
     if (strlen(key) != 26)
     {
-        printf("Key must contain 26 characters.");
+        printf("Key must contain 26 characters.○\n");
         return 1;
     }
     for (int i = 0; key[i] != '\0'; i++)
     {
         if (!isalpha(key[i]))
         {
-            printf("Key must only contain alphabetic characters.");
+            printf("Key must only contain alphabetic characters.\n");
             return 1;
         }
         for (int seg_char = 0; seg_char < i; seg_char++)
