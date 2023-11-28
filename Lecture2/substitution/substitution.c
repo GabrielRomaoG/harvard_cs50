@@ -83,11 +83,6 @@ bool has_repeated_characters(string key)
 
 void print_encrypted_cipher(string key, string plaintext)
 {
-    char upper_key[26];
-    for (int i = 0; key[i] != '\0'; i++)
-    {
-        upper_key[i] = toupper(key[i]);
-    }
     for (int i = 0; plaintext[i] != '\0'; i++)
     {
         char character = plaintext[i];
@@ -97,11 +92,11 @@ void print_encrypted_cipher(string key, string plaintext)
         }
         if (islower(character))
         {
-            printf("%c", tolower(upper_key[character - 'a']));
+            printf("%c", tolower(key[character - 'a']));
         }
         if (isupper(character))
         {
-            printf("%c", upper_key[character - 'A']);
+            printf("%c", toupper(key[character - 'A']));
         }
     }
 }
