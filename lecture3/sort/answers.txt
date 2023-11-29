@@ -1,11 +1,17 @@
-sort1 uses: TODO
+sort1 uses: BUBBLE SORT
 
-How do you know?: TODO
+How do you know?: 
+A large increase in runtime sorting 5000 random numbers then 50000 random numbers, meaning that the time complexity is O (n^2).
+And, a low increase in runtime using larger and larger lenghts of sorted numbers, meaning that the time complexity in this case is O (n). 
 
-sort2 uses: TODO
+sort2 uses: MERGE SORT
 
-How do you know?: TODO
+How do you know?: 
+low increase in runtime using larger and larger lenghts of random numbers.
+And, a similar runtime comparing the execution of sorted and random numbers
 
-sort3 uses: TODO
 
-How do you know?: TODO
+sort3 uses: SELECTION SORT
+
+How do you know?: 
+High increase in runtime using both larger and larger random and sorted numbers.
