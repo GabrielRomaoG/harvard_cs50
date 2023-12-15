@@ -115,6 +115,22 @@ bool vote(int rank, string name, int ranks[])
 void record_preferences(int ranks[])
 {
     // TODO
+    for (int cand1_id = 0; cand1_id < candidate_count; cand1_id++)
+    {
+        int cand1_rank = ranks[cand1_id];
+        for (int cand2_id = cand1_id + 1; cand2_id < candidate_count; cand2_id++)
+        {
+            int cand2_rank = ranks[cand2_id];
+            if (cand1_rank < cand2_rank)
+            {
+                preferences[cand1_id][cand2_id]++;
+            }
+            if (cand1_rank > cand2_rank)
+            {
+                preferences[cand2_id][cand1_id]++;
+            }
+        }
+    }
     return;
 }
 
