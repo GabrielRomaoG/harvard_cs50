@@ -197,6 +197,23 @@ void lock_pairs(void)
 void print_winner(void)
 {
     // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        bool is_graph_source = true;
+        for (int k = 0; k < candidate_count; k++)
+        {
+            if (locked[k][i] == true)
+            {
+                is_graph_source = false;
+                break;
+            }
+        }
+        if (is_graph_source)
+        {
+            printf("%s", candidates[i]);
+            break;
+        }
+    }
     return;
 }
 
