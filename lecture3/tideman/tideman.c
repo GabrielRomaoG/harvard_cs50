@@ -138,6 +138,27 @@ void record_preferences(int ranks[])
 void add_pairs(void)
 {
     // TODO
+    for (int cand1_id = 0; cand1_id < candidate_count; cand1_id++)
+    {
+        for (int cand2_id = cand1_id + 1; cand2_id < candidate_count; cand2_id++)
+        {
+            int pref_cand1_over_cand2 = preferences[cand1_id][cand2_id];
+            int pref_cand2_over_cand1 = preferences[cand2_id][cand1_id];
+
+            if (pref_cand1_over_cand2 > pref_cand2_over_cand1)
+            {
+                pairs[pair_count].winner = cand1_id;
+                pairs[pair_count].loser = cand2_id;
+                pair_count++;
+            }
+            if (pref_cand1_over_cand2 < pref_cand2_over_cand1)
+            {
+                pairs[pair_count].winner = cand2_id;
+                pairs[pair_count].loser = cand1_id;
+                pair_count++;
+            }
+        }
+    }
     return;
 }
 
