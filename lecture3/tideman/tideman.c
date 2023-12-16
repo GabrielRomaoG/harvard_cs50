@@ -168,6 +168,8 @@ void add_pairs(void)
 void sort_pairs(void)
 {
     // TODO
+    pair aux[MAX * (MAX - 1) / 2] = {0};
+    mergesort(pairs,  aux, 0, pair_count - 1);
     return;
 }
 
