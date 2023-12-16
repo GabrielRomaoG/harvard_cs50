@@ -179,6 +179,17 @@ void sort_pairs(void)
 void lock_pairs(void)
 {
     // TODO
+    for (int pair_id = 0; pair_id < pair_count; pair_id++)
+    {
+        if (pair_id <= 1)
+        {
+            locked[pairs[pair_id].winner][pairs[pair_id].loser] = true;
+        }
+        else if (cycle_test(pairs[pair_id].winner, pairs[pair_id].loser, pair_id))
+        {
+            locked[pairs[pair_id].winner][pairs[pair_id].loser] = true;
+        }
+    }
     return;
 }
 
