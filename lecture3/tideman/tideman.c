@@ -32,6 +32,8 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
+void merge(pair pairs[], pair aux[], int left,int middle, int right);
+void mergesort(pair pairs[], pair aux[], int left, int right);
 
 int main(int argc, string argv[])
 {
@@ -181,4 +183,56 @@ void print_winner(void)
 {
     // TODO
     return;
+}
+
+void merge(pair pairs[], pair aux[], int left,int middle, int right)
+{
+    for (int k = left; k <= right; k++)
+    {
+        aux[k] = pairs[k];
+    }
+    int i = left;
+    int j = middle + 1;
+
+    for (int k = left; k <= right; k++)
+    {
+        int j_victor_strenght = preferences[aux[j].winner][aux[j].loser];
+        int i_victor_strenght = preferences[aux[i].winner][aux[i].loser];
+        if (i > middle)
+        {
+            pairs[k] = aux[j];
+            j++;
+        }
+        else if (j > right)
+        {
+            pairs[k] = aux[i];
+            i++;
+        }
+        else if (j_victor_strenght > i_victor_strenght)
+        {
+            pairs[k] = aux[j];
+            j++;
+        }
+        else 
+        {
+            pairs[k] = aux[i];
+            i++;
+        }
+    }
+
+}
+
+void mergesort(pair pairs[], pair aux[], int left, int right)
+{
+    if (right <= left)
+    {
+        return;
+    }
+    int middle = (left + right) / 2;
+
+    mergesort(pairs, aux, left, middle);
+
+    mergesort(pairs, aux, middle + 1, right);
+
+    merge(pairs, aux, left, middle, right);
 }
