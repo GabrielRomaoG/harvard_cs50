@@ -173,13 +173,11 @@ void lock_pairs(void)
     // TODO
     for (int pair_id = 0; pair_id < pair_count; pair_id++)
     {
-        if (pair_id <= 1)
+        int winner =  pairs[pair_id].winner;
+        int loser = pairs[pair_id].loser;
+        if (cycle_test(winner, loser))
         {
-            locked[pairs[pair_id].winner][pairs[pair_id].loser] = true;
-        }
-        else if (cycle_test(pairs[pair_id].winner, pairs[pair_id].loser, pair_id))
-        {
-            locked[pairs[pair_id].winner][pairs[pair_id].loser] = true;
+            locked[winner][loser] = true;
         }
     }
     return;
