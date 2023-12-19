@@ -263,22 +263,19 @@ void mergesort(pair pairs[], pair aux[], int left, int right)
 
 bool cycle_test(int winner, int loser, int pair_id)
 {
-    for (int i = 0; i < pair_count; i++)
+    bool found_cycle = false;
+    for (int i = 0; i < pair_id; i++)
     {
-        if (pair_id == i)
-        {
-            continue;
-        }
         int pair_winner =  pairs[i].winner;
         int pair_loser = pairs[i].loser;
         if (pair_loser == winner && pair_winner == loser)
         {
-            return false;
+            return true;
         }
         if (pair_loser == winner)
         {
-            return cycle_test(pair_winner, loser, i);
+            found_cycle = cycle_test(pair_winner, loser, pair_id);
         }
     }
-    return true;
+    return !found_cycle;;
 }
