@@ -34,7 +34,7 @@ void lock_pairs(void);
 void print_winner(void);
 void merge(pair pairs[], pair aux[], int left,int middle, int right);
 void mergesort(pair pairs[], pair aux[], int left, int right);
-bool cycle_test(int winner, int loser, int pair_id);
+bool cycle_test(int winner, int loser);
 
 
 int main(int argc, string argv[])
@@ -261,21 +261,19 @@ void mergesort(pair pairs[], pair aux[], int left, int right)
     merge(pairs, aux, left, middle, right);
 }
 
-bool cycle_test(int winner, int loser, int pair_id)
+bool cycle_test(int winner, int loser)
 {
-    bool found_cycle = false;
-    for (int i = 0; i < pair_id; i++)
+    if (winner == loser)
     {
-        int pair_winner =  pairs[i].winner;
-        int pair_loser = pairs[i].loser;
-        if (pair_loser == winner && pair_winner == loser)
+        return false;
+    }
+    for (int i = 0; i < candidate_count; i++)
+    {
+        int locked_i_winner = locked[i][winner];
+        if (locked_i_winner && !cycle_test(i, loser))
         {
-            return true;
-        }
-        if (pair_loser == winner)
-        {
-            found_cycle = cycle_test(pair_winner, loser, pair_id);
+            return false;
         }
     }
-    return !found_cycle;;
+    return true;
 }
