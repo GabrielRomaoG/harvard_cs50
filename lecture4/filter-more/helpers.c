@@ -8,10 +8,11 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int w_id = 0; w_id < width; w_id++)
         {
-            int rgb_average = round((image[h_id][w_id].rgbtRed + image[h_id][w_id].rgbtGreen + image[h_id][w_id].rgbtBlue) / 3.0);
-            image[h_id][w_id].rgbtRed = rgb_average;
-            image[h_id][w_id].rgbtGreen = rgb_average;
-            image[h_id][w_id].rgbtBlue = rgb_average;
+            // RGBTRIPLE pixel = image[h_id][w_id];
+            int color_average = round((image[h_id][w_id].rgbtRed + image[h_id][w_id].rgbtGreen + image[h_id][w_id].rgbtBlue) / 3.0);
+            image[h_id][w_id].rgbtRed = color_average;
+            image[h_id][w_id].rgbtGreen = color_average;
+            image[h_id][w_id].rgbtBlue = color_average;
         }
     }
     return;
@@ -22,12 +23,12 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     for (int w_id = 0; w_id < width / 2; w_id++)
     {
-        for(int h_id = 0; h_id < height; h_id++)
+        for (int h_id = 0; h_id < height; h_id++)
         {
             RGBTRIPLE tmp_pixel = image[h_id][w_id];
-            int rev_pixel_id = width - w_id - 1;
-            image[h_id][w_id] = image[h_id][rev_pixel_id];
-            image[h_id][rev_pixel_id] = tmp_pixel;
+            int revPixelId = width - w_id - 1;
+            image[h_id][w_id] = image[h_id][revPixelId];
+            image[h_id][revPixelId] = tmp_pixel;
         }
     }
     return;
@@ -44,7 +45,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             copy[h_id][w_id] = image[h_id][w_id];
         }
     }
-    int around_pixel_permutations[9][2] = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 0}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+    int pixel_3by3_permutations[9][2] = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 0}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
     for (int h_id = 0; h_id < height; h_id++)
     {
         for (int w_id = 0; w_id < width; w_id++)
@@ -56,18 +57,18 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
             for (int i = 0; i < 9; i++)
             {
-                int rowSum = around_pixel_permutations[i][0];
-                int colSum = around_pixel_permutations[i][1];
+                int rowPermutation = pixel_3by3_permutations[i][0];
+                int colPermutation = pixel_3by3_permutations[i][1];
 
-                int around_pixel_row = h_id + rowSum;
-                int around_pixel_column = w_id + colSum;
+                int aroundPixelRow = h_id + rowPermutation;
+                int aroundPixelCol = w_id + colPermutation;
 
-                if (around_pixel_row < 0 || around_pixel_column < 0 || around_pixel_row >= width || around_pixel_column >= height)
+                if (aroundPixelRow < 0 || aroundPixelCol < 0 || aroundPixelRow >= width || aroundPixelCol >= height)
                 {
                     continue;
                 }
 
-                RGBTRIPLE current_pixel = copy[around_pixel_row][around_pixel_column];
+                RGBTRIPLE current_pixel = copy[aroundPixelRow][aroundPixelCol];
 
                 redSum += current_pixel.rgbtRed;
                 greenSum += current_pixel.rgbtGreen;
@@ -112,15 +113,15 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 int rowPermutation = pixel_3by3_permutations[i][0];
                 int colPermutation = pixel_3by3_permutations[i][1];
 
-                int around_pixel_row = h_id + rowPermutation;
-                int around_pixel_column = w_id + colPermutation;
+                int aroundPixelRow = h_id + rowPermutation;
+                int aroundPixelCol = w_id + colPermutation;
 
-                if (around_pixel_row < 0 || around_pixel_column < 0 || around_pixel_row >= height || around_pixel_column >= width)
+                if (aroundPixelRow < 0 || aroundPixelCol < 0 || aroundPixelRow >= height || aroundPixelCol >= width)
                 {
                     continue;
                 }
                 
-                RGBTRIPLE current_pixel = copy[around_pixel_row][around_pixel_column];
+                RGBTRIPLE current_pixel = copy[aroundPixelRow][aroundPixelCol];
 
                 int gxMultiplier = 1;
                 if (rowPermutation == 0)
