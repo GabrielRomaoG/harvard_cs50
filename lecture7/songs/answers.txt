@@ -1,0 +1,3 @@
+audio aura = (average(energy) + average(danceability) + average(valence)) / 3
+
+i think that the formula should be weighted by the preferences of the user, for example if a user prefers high valence songs, the valence should have a higher weight.
